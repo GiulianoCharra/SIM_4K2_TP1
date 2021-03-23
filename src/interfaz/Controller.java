@@ -1,12 +1,20 @@
 package interfaz;
 
 import clases.GeneradorNumerosAletorios;
+import clases.NumeroAleatorio;
+import javafx.beans.property.SimpleFloatProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.ResourceBundle;
 
@@ -23,9 +31,9 @@ public class Controller implements Initializable
     public Button btGenerar;
     public Button btSiguiente;
     public Button btnSalir;
-    public TableView<Map.Entry> tv_NumerosGenerados;
-    public TableColumn<Map.Entry, Integer> tc_Iteraciones;
-    public TableColumn<Map.Entry, Float> tc_N_Generados;
+    public TableView<NumeroAleatorio> tv_NumerosGenerados;
+    public TableColumn<NumeroAleatorio, Integer> tc_Iteraciones;
+    public TableColumn<NumeroAleatorio, Float> tc_N_Generados;
     public ToggleGroup tg_Metodo;
     public Label lbl_c_Desc;
     public Label lbl_Semilla;
@@ -51,11 +59,15 @@ public class Controller implements Initializable
     private int g;
     private boolean metodo = true;//true = lineal -- false = Multiplicativo
 
-    private GeneradorNumerosAletorios lista;
+    private GeneradorNumerosAletorios lista = new GeneradorNumerosAletorios();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
+
+        tc_Iteraciones.setCellValueFactory(new PropertyValueFactory<>("iteracion"));
+        tc_N_Generados.setCellValueFactory(new PropertyValueFactory<>("numRand"));
+        tv_NumerosGenerados.setItems(lista.getVecNA());
     }
 
 
@@ -119,17 +131,18 @@ public class Controller implements Initializable
         c = Integer.parseInt(tf_C_Aditiva.getText());
         lista = new  GeneradorNumerosAletorios(X0, a, c, m);
         lista.generar();
-//        ObservableList numRand = FXCollections.observableArrayList(lista.getVecNA().entrySet());
-
-
-//        tc_Iteraciones.setCellValueFactory(lista.getVecNA().keySet());
-//
-//        tc_N_Generados.setCellValueFactory(lista.getVecNA().values());
-
+        updatetable();
     }
 
     public void generarSiguiente(){
         lista.siguiente();
+        updatetable();
+    }
+
+
+    public void updatetable()
+    {
+        tv_NumerosGenerados.setItems(lista.getVecNA());
     }
 
     public void close()

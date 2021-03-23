@@ -1,17 +1,28 @@
 package clases;
 
-import java.util.HashMap;
-import java.util.Map;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
+/**
+ * Clase que generara numeros peudaaleatorios por el metodo
+ *  Linea o Mixto y el metodo Multiplicativo
+ */
 public class GeneradorNumerosAletorios
 {
-    private int X0;
-    private int a;
-    private int c;
-    private int m;
-    private Map<Integer, Float> vecNA;
+
+    //Constantes enteros y positivos
+    private int X0; // semilla
+    private int a; // contante multiplicativa
+    private int c;  //contante aditiva -- en el metodo Multiplicativo vale 0, no se usa
+    private int m;  // modulo
+    // Lista de NumerosAleatorios
+    private ObservableList<NumeroAleatorio> vecNA;
+    // Cantidad inical de numeros a generar
     private int count;
-    private int Xi;
+
+    private int Xi; //
+    public GeneradorNumerosAletorios() {
+    }
 
     public GeneradorNumerosAletorios(int X0, int a, int c, int m)
     {
@@ -19,11 +30,15 @@ public class GeneradorNumerosAletorios
         this.a = a;
         this.c = c;
         this.m = m;
-        this.vecNA = new HashMap<>();
         this.Xi = X0;
         this.count = 20;
     }
 
+    /**
+     * Genera un numero pseudoaleatorio
+     *
+     * @return un numero float con 4 digitos decimale
+     */
     private float generador()
     {
         float num;
@@ -34,34 +49,35 @@ public class GeneradorNumerosAletorios
         return (float)(Math.round(num*10000))/10000;
     }
 
+    /**
+     *
+     */
     public void generar()
     {
+        vecNA = FXCollections.observableArrayList();
         for (int i = 0; i<count; i++)
         {
-            vecNA.put(i,generador());
+            vecNA.add(new NumeroAleatorio(i, generador()));
         }
-
-        System.out.println(vecNA.entrySet());
         count++;
     }
 
+    /**
+     *
+     */
     public void siguiente()
     {
-        System.out.println("\n");
         float n = generador();
         int tam = vecNA.size();
-        vecNA.put(tam,n);
+        vecNA.add(new NumeroAleatorio(tam,n));
         count++;
-        for (Map.Entry m: vecNA.entrySet())
-        {
-            System.out.println(m);
-        }
     }
 
-
-
-    public Map<Integer, Float> getVecNA()
-    {
+    /** Retorna una lista Observable XD
+     * de NumerosAleatorio ordenados como fueron generados
+     * @return el vecNA
+     */
+    public ObservableList<NumeroAleatorio> getVecNA() {
         return vecNA;
     }
 }
