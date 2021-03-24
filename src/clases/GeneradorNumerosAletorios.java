@@ -15,10 +15,12 @@ public class GeneradorNumerosAletorios
     private int a; // contante multiplicativa
     private int c;  //contante aditiva -- en el metodo Multiplicativo vale 0, no se usa
     private int m;  // modulo
+
     // Lista de NumerosAleatorios
     private ObservableList<NumeroAleatorio> vecNA;
-    // Cantidad inical de numeros a generar
-    private int count;
+
+    // Cantidad de numeros a generar
+    private int cant;
 
     private int Xi; //
     public GeneradorNumerosAletorios() {
@@ -31,46 +33,55 @@ public class GeneradorNumerosAletorios
         this.c = c;
         this.m = m;
         this.Xi = X0;
-        this.count = 20;
+        this.cant = 20;
     }
 
     /**
-     * Genera un numero pseudoaleatorio
-     *
-     * @return un numero float con 4 digitos decimale
+     * Genera una cantidad "n" de numero pseudoaleatorio
+     * por defecto la cantidad inicial de numeros a genererar es de 20
      */
-    private float generador()
+    private void generarNumero(int newCant)
     {
+        if (cant!= newCant)
+            cant= newCant;
+
         float num;
+        NumeroAleatorio nuevo;
 
-        num = (float) Xi/(m - 1);
-        Xi = (( a * Xi) + c) % m;
-
-        return (float)(Math.round(num*10000))/10000;
+        for (int i = vecNA.size(); i< newCant; i++)
+        {
+            num = (float) Xi/m;
+            Xi = (( a * Xi) + c) % m;
+            nuevo = new NumeroAleatorio(i, (float)(Math.round(num*10000))/10000);
+            vecNA.add(nuevo);
+        }
     }
 
     /**
-     *
+     * Genera por un numero fijo de numeros
      */
     public void generar()
     {
         vecNA = FXCollections.observableArrayList();
-        for (int i = 0; i<count; i++)
-        {
-            vecNA.add(new NumeroAleatorio(i, generador()));
-        }
-        count++;
+        generarNumero(cant);
     }
 
     /**
      *
+     * @param cant cantidad de numeros a generar
+     */
+    public void generar(int cant)
+    {
+        vecNA = FXCollections.observableArrayList();
+        generarNumero(cant);
+    }
+
+    /** Genera un solo numero aleatorio
+     *
      */
     public void siguiente()
     {
-        float n = generador();
-        int tam = vecNA.size();
-        vecNA.add(new NumeroAleatorio(tam,n));
-        count++;
+        generarNumero(cant + 1);
     }
 
     /** Retorna una lista Observable XD
