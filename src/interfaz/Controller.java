@@ -7,12 +7,19 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Map;
@@ -127,11 +134,13 @@ public class Controller implements Initializable
 
     public void generarNumeros()
     {
-        X0 = Integer.parseInt(tf_Semilla.getText());
-        c = Integer.parseInt(tf_C_Aditiva.getText());
-        lista = new  GeneradorNumerosAletorios(X0, a, c, m);
-        lista.generar();
-        updatetable();
+
+            X0 = Integer.parseInt(tf_Semilla.getText());
+            c = Integer.parseInt(tf_C_Aditiva.getText());
+            lista = new GeneradorNumerosAletorios(X0, a, c, m);
+            lista.generar();
+            updatetable();
+
     }
 
     public void generarSiguiente(){
@@ -149,5 +158,8 @@ public class Controller implements Initializable
     {
         Stage stage = (Stage)btnSalir.getScene().getWindow();
         stage.close();
+    }
+
+    public void calcularChi(ActionEvent actionEvent) {
     }
 }

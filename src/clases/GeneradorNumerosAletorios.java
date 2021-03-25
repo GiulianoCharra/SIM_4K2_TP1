@@ -91,4 +91,16 @@ public class GeneradorNumerosAletorios
     public ObservableList<NumeroAleatorio> getVecNA() {
         return vecNA;
     }
+
+    public float[] getNumeros()
+    {
+        float[] vec = new float[cant];
+        int i = 0;
+        for (NumeroAleatorio n: vecNA)
+        {
+            vec[i] = n.getNumRand();
+            i++;
+        }
+        return vec;
+    }
 }

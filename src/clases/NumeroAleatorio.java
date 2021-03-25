@@ -14,7 +14,8 @@ public class NumeroAleatorio {
         this.numRand = numRand;
     }
 
-    public int getIteracion() {
+    public int getIteracion()
+    {
         return iteracion;
     }
 
