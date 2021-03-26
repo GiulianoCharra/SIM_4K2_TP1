@@ -2,16 +2,13 @@ package interfaz;
 
 
 import clases.Chi_Cuadrado;
-import clases.GeneradorNumerosAletorios;
-import clases.NumeroAleatorio;
-
-import java.util.ArrayList;
+import clases.logicaTP1;
 
 public class mainPrueba {
 
     public static void main(String[] args)
     {
-        GeneradorNumerosAletorios lista = new GeneradorNumerosAletorios(6,13,7,8);
+        logicaTP1 lista = new logicaTP1(6,13,7,8);
         lista.generar();
         lista.siguiente();
 

@@ -1,5 +1,8 @@
 package clases;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Chi_Cuadrado
 {
     private int cantIntervalos;
@@ -7,10 +10,9 @@ public class Chi_Cuadrado
     private float[] vecNum;
     private float media;
     private float var;
-    private Intervalo[] intervalos;
+    private ObservableList<Intervalo> intervalos;
 
-
-    public Chi_Cuadrado(int cantIntervalos, int muestra, int metodo)
+    public Chi_Cuadrado(int muestra, int cantIntervalos, int metodo)
     {
         this.cantIntervalos = cantIntervalos;
         this.muestra = muestra;
@@ -23,6 +25,7 @@ public class Chi_Cuadrado
                 for (int i = 0; i < muestra; i++)
                 {
                     vecNum[i] = (float)Math.round(Math.random()*10000)/10000;
+                    System.out.println(vecNum[i]);
                 }
             case 2:
                 // Metodo Random  Lineal o Mixto
@@ -31,6 +34,9 @@ public class Chi_Cuadrado
                 // Metodo Random Multiplicativo
 
         }
+
+        intervalos = FXCollections.observableArrayList();
+        calcularChi();
     }
 
     private void calcMedia()
@@ -57,16 +63,14 @@ public class Chi_Cuadrado
 
     public void calcIntervalos()
     {
-       intervalos = new Intervalo[cantIntervalos];
        float tam = (float) cantIntervalos /muestra;
        float inf = 0;
        float sup = tam;
-        for (int i = 0; i < cantIntervalos; i++)
+        for (int i = 1; i <= cantIntervalos; i++)
         {
-            intervalos[i] = new Intervalo(i,inf,sup);
+            intervalos.add(new Intervalo(i, inf,(float)Math.round(sup*10)/10));
             inf = (float) Math.round((sup + 0.0001)*10000)/10000;
             sup += tam;
-
         }
     }
 
@@ -116,7 +120,7 @@ public class Chi_Cuadrado
             float v = (float) (Math.pow((fO - fE), 2) / fE);
             System.out.println("fObse:" +fO+ " fEsp: " + fE+" nuevo: " + sum + "+"+ v + "= " + ((sum+v)) );
             sum += v;
-            n.setChi(sum);
+            n.setChi((float)Math.round(sum*1000)/1000);
         }
     }
 
@@ -128,9 +132,14 @@ public class Chi_Cuadrado
         }
     }
 
+    public ObservableList<Intervalo> getIntervalos()
+    {
+        return intervalos;
+    }
+
     public static class Intervalo
     {
-        private int num;
+        private int numIt;
         private float inferior;
         private float superior;
         private int f_Obs;
@@ -139,19 +148,19 @@ public class Chi_Cuadrado
 
         public Intervalo(int num, float inferior, float superior)
         {
-            this.num = num;
+            this.numIt = num;
             this.inferior = inferior;
             this.superior = superior;
             this.f_Obs = 0;
             this.f_Esp = 0;
         }
 
-        public int getNum() {
-            return num;
+        public int getNumIt() {
+            return numIt;
         }
 
-        public void setNum(int num) {
-            this.num = num;
+        public void setNumIt(int numIt) {
+            this.numIt = numIt;
         }
 
         public float getInferior() {
@@ -202,7 +211,7 @@ public class Chi_Cuadrado
         @Override
         public String toString() {
             return "Intervalo{" +
-                    "num=" + num +
+                    "num=" + numIt +
                     ", inferior=" + inferior +
                     ", superior=" + superior +
                     ", f_Obs=" + f_Obs +

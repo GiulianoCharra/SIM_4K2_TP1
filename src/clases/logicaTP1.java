@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
  * Clase que generara numeros peudaaleatorios por el metodo
  *  Linea o Mixto y el metodo Multiplicativo
  */
-public class GeneradorNumerosAletorios
+public class logicaTP1
 {
 
     //Constantes enteros y positivos
@@ -17,16 +17,16 @@ public class GeneradorNumerosAletorios
     private int m;  // modulo
 
     // Lista de NumerosAleatorios
-    private ObservableList<NumeroAleatorio> vecNA;
+    private ObservableList<randomNum> vecNA;
 
     // Cantidad de numeros a generar
     private int cant;
 
     private int Xi; //
-    public GeneradorNumerosAletorios() {
+    public logicaTP1() {
     }
 
-    public GeneradorNumerosAletorios(int X0, int a, int c, int m)
+    public logicaTP1(int X0, int a, int c, int m)
     {
         this.X0 = X0;
         this.a = a;
@@ -46,13 +46,13 @@ public class GeneradorNumerosAletorios
             cant= newCant;
 
         float num;
-        NumeroAleatorio nuevo;
+        randomNum nuevo;
 
         for (int i = vecNA.size(); i< newCant; i++)
         {
             num = (float) Xi/m;
             Xi = (( a * Xi) + c) % m;
-            nuevo = new NumeroAleatorio(i, (float)(Math.round(num*10000))/10000);
+            nuevo = new randomNum(i, (float)(Math.round(num*10000))/10000);
             vecNA.add(nuevo);
         }
     }
@@ -88,7 +88,7 @@ public class GeneradorNumerosAletorios
      * de NumerosAleatorio ordenados como fueron generados
      * @return el vecNA
      */
-    public ObservableList<NumeroAleatorio> getVecNA() {
+    public ObservableList<randomNum> getVecNA() {
         return vecNA;
     }
 
@@ -96,11 +96,45 @@ public class GeneradorNumerosAletorios
     {
         float[] vec = new float[cant];
         int i = 0;
-        for (NumeroAleatorio n: vecNA)
+        for (randomNum n: vecNA)
         {
             vec[i] = n.getNumRand();
             i++;
         }
         return vec;
     }
+
+    public  static class randomNum {
+        private int iteracion;
+        private float numRand;
+
+        public randomNum()
+        {
+        }
+
+        public randomNum(int iteracion, float numRand)
+        {
+            this.iteracion = iteracion;
+            this.numRand = numRand;
+        }
+
+        public int getIteracion()
+        {
+            return iteracion;
+        }
+
+        public void setIteracion(int iteracion) {
+            this.iteracion = iteracion;
+        }
+
+        public float getNumRand() {
+            return numRand;
+        }
+
+        public void setNumRand(float numRand) {
+            this.numRand = numRand;
+        }
+
+    }
+
 }

@@ -4,16 +4,17 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="ap_Base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="665.0" prefWidth="906.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.Controller">
+<AnchorPane fx:id="ap_Base" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="676.0" prefWidth="664.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="interfaz.Controller">
     <Label alignment="TOP_CENTER" layoutX="39.0" layoutY="20.0" prefHeight="35.0" prefWidth="737.0" text="Trabajo Practico N°1" AnchorPane.leftAnchor="39.0" AnchorPane.rightAnchor="41.0" AnchorPane.topAnchor="20.0">
         <font>
           <Font name="Bell MT" size="24.0" />
         </font>
     </Label>
-    <TabPane layoutX="40.0" layoutY="66.0" prefHeight="531.0" prefWidth="540.0" style="-fx-border-style: solid" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="66.0">
+    <TabPane layoutX="40.0" layoutY="66.0" prefHeight="531.0" prefWidth="540.0" style="-fx-border-style: solid;" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="67.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="66.0">
         <Tab text="Generacion de Numeros Aleatorios">
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="485.0" prefWidth="540.0">
-                <TableView fx:id="tv_NumerosGenerados" layoutX="-2.0" layoutY="236.0" pickOnBounds="false" prefHeight="266.0" prefWidth="580.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="236.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="485.0" prefWidth="540.0" style="-fx-border-radius: 0;">
+            <Pane layoutX="393.0" layoutY="12.0" prefHeight="156.0" prefWidth="215.0" style="-fx-border-radius: 20; -fx-border-style: solid;" />
+                <TableView fx:id="tv_NumerosGenerados" layoutX="2.0" layoutY="236.0" pickOnBounds="false" prefHeight="266.0" prefWidth="580.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="236.0">
                     <placeholder>
                         <Label text="No se ah generado ningun numero, aun ;)" />
                     </placeholder>
@@ -56,16 +57,16 @@
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                 <Label fx:id="lbl_tamaño_muestra" layoutX="39.0" layoutY="36.0" prefHeight="27.0" prefWidth="215.0" text="Tamaño de la Muestra (N)">
                     <font>
-                        <Font size="18.0" />
+                        <Font size="17.0" />
                     </font>
                 </Label>
                 <TextField fx:id="tf_Muestra" layoutX="254.0" layoutY="37.0" prefHeight="25.0" prefWidth="110.0" />
-                <Label fx:id="lbl_subInterbalos" layoutX="39.0" layoutY="87.0" prefHeight="17.0" prefWidth="153.0" text="SubIntervalos (k)">
+                <Label fx:id="lbl_subInterbalos" layoutX="40.0" layoutY="134.0" prefHeight="17.0" prefWidth="153.0" text="SubIntervalos (k)">
                     <font>
-                        <Font size="18.0" />
+                        <Font size="17.0" />
                     </font>
                 </Label>
-                <RadioButton fx:id="rb_5" layoutX="208.0" layoutY="90.0" mnemonicParsing="false" text="5">
+                <RadioButton fx:id="rb_5" layoutX="172.0" layoutY="138.0" mnemonicParsing="false" text="5">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -73,17 +74,17 @@
                         <ToggleGroup fx:id="tg_SubIntervalos" />
                     </toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="rb_10" layoutX="273.0" layoutY="91.0" mnemonicParsing="false" text="10" toggleGroup="$tg_SubIntervalos">
+                <RadioButton fx:id="rb_10" layoutX="216.0" layoutY="138.0" mnemonicParsing="false" text="10" toggleGroup="$tg_SubIntervalos">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </RadioButton>
-                <RadioButton fx:id="rb_15" layoutX="344.0" layoutY="91.0" mnemonicParsing="false" text="15" toggleGroup="$tg_SubIntervalos">
+                <RadioButton fx:id="rb_15" layoutX="270.0" layoutY="137.0" mnemonicParsing="false" text="15" toggleGroup="$tg_SubIntervalos">
                     <font>
                         <Font size="14.0" />
                     </font>
                 </RadioButton>
-                <RadioButton fx:id="rb_20" layoutX="420.0" layoutY="90.0" mnemonicParsing="false" text="20" toggleGroup="$tg_SubIntervalos">
+                <RadioButton fx:id="rb_20" layoutX="324.0" layoutY="137.0" mnemonicParsing="false" text="20" toggleGroup="$tg_SubIntervalos">
                     <font>
                         <Font size="14.0" />
                     </font>
@@ -95,9 +96,9 @@
                <columns>
                   <TableColumn fx:id="tv_Intervalos" editable="false" maxWidth="500.0" prefWidth="200.0" sortable="false" text="Intervalos">
                      <columns>
-                        <TableColumn fx:id="tv_Nr_intervalo" editable="false" minWidth="30.0" prefWidth="50.0" sortable="false" text="N°" />
-                        <TableColumn fx:id="tv_menor" editable="false" minWidth="60.0" prefWidth="150.0" sortable="false" text="Min" />
-                        <TableColumn fx:id="tv_Max" editable="false" minWidth="60.0" prefWidth="150.0" sortable="false" text="Max" />
+                        <TableColumn fx:id="tc_Nr_intervalo" editable="false" minWidth="30.0" prefWidth="50.0" sortable="false" text="N°" />
+                        <TableColumn fx:id="tc_menor" editable="false" minWidth="60.0" prefWidth="150.0" sortable="false" text="Min" />
+                        <TableColumn fx:id="tc_Max" editable="false" minWidth="60.0" prefWidth="150.0" sortable="false" text="Max" />
                      </columns>
                   </TableColumn>
                   <TableColumn fx:id="tc_F_Observada" editable="false" minWidth="100.0" prefWidth="300.0" sortable="false" text="Frecuencia Observada" />
@@ -108,12 +109,12 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <Label fx:id="lvl_metodo_calculo" layoutX="385.0" layoutY="36.0" prefHeight="27.0" prefWidth="263.0" text="Metodo en le que se generara la muestra">
+            <Label fx:id="lvl_metodo_calculo" layoutX="75.0" layoutY="83.0" prefHeight="27.0" prefWidth="73.0" text="Generador">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <RadioButton fx:id="rb_Lineal_Testhi" layoutX="660.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#changeMetodo" selected="true" text="Linel">
+            <RadioButton fx:id="rb_Lineal_Testhi" layoutX="165.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#changeMetodoChi" selected="true" text="Linel">
                <font>
                   <Font size="14.0" />
                </font>
@@ -121,12 +122,24 @@
                   <ToggleGroup fx:id="tg_MetodoChi" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="rb_Sistema" layoutX="733.0" layoutY="40.0" mnemonicParsing="false" onMouseClicked="#changeMetodo" text="Sistema" toggleGroup="$tg_MetodoChi">
+            <RadioButton fx:id="rb_Sistema" layoutX="238.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#changeMetodoChi" text="Sistema" toggleGroup="$tg_MetodoChi">
                <font>
                   <Font size="14.0" />
                </font>
             </RadioButton>
-            <Button fx:id="btn_Calcular_Chi" layoutX="78.0" layoutY="160.0" mnemonicParsing="false" onAction="#calcularChi" prefHeight="44.0" prefWidth="76.0" text="Calcular" />
+            <Button fx:id="btn_Calcular_Chi" layoutX="38.0" layoutY="188.0" mnemonicParsing="false" onAction="#calcularChi" prefHeight="27.0" prefWidth="111.0" text="Calcular" />
+            <Pane fx:id="p_constantes" layoutX="377.0" layoutY="25.0" prefHeight="117.0" prefWidth="236.0" style="-fx-border-style: solid; -fx-border-radius: 20;">
+               <children>
+                  <Label fx:id="lbl_Semilla1" layoutX="14.0" layoutY="48.0" text="X0" />
+                  <TextField fx:id="tf_Semilla1" layoutX="33.0" layoutY="44.0" prefHeight="25.0" prefWidth="82.0" />
+                  <Label fx:id="lbl_A_Multiplicativa1" layoutX="16.0" layoutY="76.0" text="a" />
+                  <TextField fx:id="tf_A_Multiplicativa1" layoutX="33.0" layoutY="74.0" onAction="#calcular_K" onKeyTyped="#calcular_K" prefHeight="25.0" prefWidth="82.0" />
+                  <Label fx:id="lbl_C_aditiva1" layoutX="127.0" layoutY="49.0" text="c" />
+                  <TextField fx:id="tf_C_Aditiva1" layoutX="144.0" layoutY="45.0" prefHeight="25.0" prefWidth="82.0" />
+                  <Label layoutX="127.0" layoutY="78.0" text="m" />
+                  <TextField fx:id="tf_Modulo1" layoutX="144.0" layoutY="74.0" onAction="#calcular_G" onKeyTyped="#calcular_G" prefHeight="25.0" prefWidth="81.0" />
+                  <Label fx:id="lbl_tamaño_muestra1" layoutX="14.0" layoutY="7.0" prefHeight="27.0" prefWidth="123.0" text="Constantes necesarias:" />
+               </children></Pane>
             </AnchorPane>
         </Tab>
     </TabPane>
