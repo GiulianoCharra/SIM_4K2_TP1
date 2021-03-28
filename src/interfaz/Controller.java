@@ -45,7 +45,6 @@ public class Controller implements Initializable
     public RadioButton rb_20;
     public RadioButton rb_Lineal_Testhi;
     public RadioButton rb_Sistema;
-    public Pane p_constantes;
     public ToggleGroup tg_MetodoChi;
     public TextField tf_Muestra;
     public TableView<Chi_Cuadrado.Intervalo> tv_Test_Chi;
@@ -65,7 +64,7 @@ public class Controller implements Initializable
     private int k;
     private int g;
     private boolean metodo = true;//true = lineal -- false = Multiplicativo
-    private boolean metocoChi = true;
+    private int metocoChi = 1;
     private logicaTP1 lista = new logicaTP1();
     private Chi_Cuadrado chi;
 
@@ -101,18 +100,6 @@ public class Controller implements Initializable
         }
     }
 
-    public void changeMetodoChi()
-    {
-        if (metocoChi) {
-            p_constantes.setVisible(false);
-            metocoChi = false;
-        }
-        else {
-            p_constantes.setVisible(true);
-            metocoChi = true;
-        }
-
-    }
 
     public void calcular_K()
     {
@@ -183,7 +170,10 @@ public class Controller implements Initializable
     {
         int muestra = Integer.parseInt( tf_Muestra.getText());
         int numInter= Integer.parseInt(((RadioButton) tg_SubIntervalos.getSelectedToggle()).getText());
-        chi = new Chi_Cuadrado(muestra, numInter,1);
+        String met = ((RadioButton)tg_MetodoChi.getSelectedToggle()).getText();
+
+
+        chi = new Chi_Cuadrado(muestra, numInter,met);
         tv_Test_Chi.setItems(chi.getIntervalos());
         chi.mostrar();
     }

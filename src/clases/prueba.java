@@ -24,7 +24,6 @@ public class prueba
 
     // Cantidad de numeros a generar
     private int cant;
-
     private int Xi;
 
 

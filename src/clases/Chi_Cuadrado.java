@@ -12,29 +12,32 @@ public class Chi_Cuadrado
     private float var;
     private ObservableList<Intervalo> intervalos;
 
-    public Chi_Cuadrado(int muestra, int cantIntervalos, int metodo)
+    public Chi_Cuadrado(int muestra, int cantIntervalos, String metodo)
     {
         this.cantIntervalos = cantIntervalos;
         this.muestra = muestra;
         this.vecNum = new float[muestra];
-
         switch (metodo)
         {
-            case 1:
+            case "Sistema":
+
                 // Metodo Random del Sistema
                 for (int i = 0; i < muestra; i++)
                 {
                     vecNum[i] = (float)Math.round(Math.random()*10000)/10000;
                     System.out.println(vecNum[i]);
                 }
-            case 2:
+                System.out.println(metodo + 1);
+                break;
+            case "Lineal":
                 // Metodo Random  Lineal o Mixto
-
-            case 3:
+                System.out.println(metodo + 2);
+                break;
+            case "Multiplicativo":
                 // Metodo Random Multiplicativo
-
+                System.out.println(metodo+ 3 );
+                break;
         }
-
         intervalos = FXCollections.observableArrayList();
         calcularChi();
     }
@@ -63,12 +66,12 @@ public class Chi_Cuadrado
 
     public void calcIntervalos()
     {
-       float tam = (float) cantIntervalos /muestra;
+       float tam = (float) 1 /cantIntervalos;
        float inf = 0;
        float sup = tam;
         for (int i = 1; i <= cantIntervalos; i++)
         {
-            intervalos.add(new Intervalo(i, inf,(float)Math.round(sup*10)/10));
+            intervalos.add(new Intervalo(i, inf,(float)Math.round(sup*100)/100));
             inf = (float) Math.round((sup + 0.0001)*10000)/10000;
             sup += tam;
         }

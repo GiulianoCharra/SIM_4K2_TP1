@@ -44,7 +44,7 @@
                 <TextField fx:id="tf_K_Valor" layoutX="265.0" layoutY="66.0" onAction="#calcular_A_multiplicativa" onKeyTyped="#calcular_A_multiplicativa" prefHeight="26.0" prefWidth="95.0" />
                 <Label layoutX="217.0" layoutY="101.0" text="g" />
                 <TextField fx:id="tf_G_Valor" layoutX="265.0" layoutY="97.0" onAction="#calcular_Modulo" onKeyTyped="#calcular_Modulo" prefHeight="25.0" prefWidth="95.0" />
-                <Button fx:id="btGenerar" layoutX="208.0" layoutY="179.0" mnemonicParsing="false" onAction="#generarNumeros" prefHeight="44.0" prefWidth="76.0" text="Generar" />
+                <Button fx:id="btGenerar" layoutX="208.0" layoutY="179.0" mnemonicParsing="false" onAction="#generarNumeros" prefHeight="44.0" prefWidth="76.0" style="-fx-border-radius: 20;" text="Generar" />
                 <Button fx:id="btSiguiente" layoutX="302.0" layoutY="179.0" mnemonicParsing="false" onAction="#generarSiguiente" prefHeight="44.0" prefWidth="75.0" text="Siguiente" />
                 <Label fx:id="lbl_X0_Desc" layoutX="402.0" layoutY="29.0" prefHeight="17.0" prefWidth="143.0" text="X0 es la semilla" />
                 <Label fx:id="lbl_a_Desc" layoutX="402.0" layoutY="58.0" prefHeight="17.0" prefWidth="214.0" text="a es la constante multiplicativa" />
@@ -114,7 +114,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <RadioButton fx:id="rb_Lineal_Testhi" layoutX="165.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#changeMetodoChi" selected="true" text="Linel">
+            <RadioButton fx:id="rb_Lineal_Testhi" layoutX="165.0" layoutY="87.0" mnemonicParsing="false" selected="true" text="Lineal">
                <font>
                   <Font size="14.0" />
                </font>
@@ -122,24 +122,12 @@
                   <ToggleGroup fx:id="tg_MetodoChi" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="rb_Sistema" layoutX="238.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#changeMetodoChi" text="Sistema" toggleGroup="$tg_MetodoChi">
+            <RadioButton fx:id="rb_Sistema" layoutX="238.0" layoutY="87.0" mnemonicParsing="false" text="Sistema" toggleGroup="$tg_MetodoChi">
                <font>
                   <Font size="14.0" />
                </font>
             </RadioButton>
             <Button fx:id="btn_Calcular_Chi" layoutX="38.0" layoutY="188.0" mnemonicParsing="false" onAction="#calcularChi" prefHeight="27.0" prefWidth="111.0" text="Calcular" />
-            <Pane fx:id="p_constantes" layoutX="377.0" layoutY="25.0" prefHeight="117.0" prefWidth="236.0" style="-fx-border-style: solid; -fx-border-radius: 20;">
-               <children>
-                  <Label fx:id="lbl_Semilla1" layoutX="14.0" layoutY="48.0" text="X0" />
-                  <TextField fx:id="tf_Semilla1" layoutX="33.0" layoutY="44.0" prefHeight="25.0" prefWidth="82.0" />
-                  <Label fx:id="lbl_A_Multiplicativa1" layoutX="16.0" layoutY="76.0" text="a" />
-                  <TextField fx:id="tf_A_Multiplicativa1" layoutX="33.0" layoutY="74.0" onAction="#calcular_K" onKeyTyped="#calcular_K" prefHeight="25.0" prefWidth="82.0" />
-                  <Label fx:id="lbl_C_aditiva1" layoutX="127.0" layoutY="49.0" text="c" />
-                  <TextField fx:id="tf_C_Aditiva1" layoutX="144.0" layoutY="45.0" prefHeight="25.0" prefWidth="82.0" />
-                  <Label layoutX="127.0" layoutY="78.0" text="m" />
-                  <TextField fx:id="tf_Modulo1" layoutX="144.0" layoutY="74.0" onAction="#calcular_G" onKeyTyped="#calcular_G" prefHeight="25.0" prefWidth="81.0" />
-                  <Label fx:id="lbl_tamaño_muestra1" layoutX="14.0" layoutY="7.0" prefHeight="27.0" prefWidth="123.0" text="Constantes necesarias:" />
-               </children></Pane>
             </AnchorPane>
         </Tab>
     </TabPane>

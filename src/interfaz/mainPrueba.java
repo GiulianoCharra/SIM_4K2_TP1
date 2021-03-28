@@ -12,7 +12,7 @@ public class mainPrueba {
         lista.generar();
         lista.siguiente();
 
-        Chi_Cuadrado chi = new Chi_Cuadrado(10,100,1);
+        Chi_Cuadrado chi = new Chi_Cuadrado(10,100,"Sistema");
         chi.calcularChi();
         chi.mostrar();
     }
